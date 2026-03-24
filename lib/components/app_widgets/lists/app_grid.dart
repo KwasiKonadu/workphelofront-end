@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr_phelo/Components/app_theme/padding.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../../Apps/Modules/hr_phelo/hr_pages/hr_people_management/onboarding/onboarding_widgets/onboarding_form.dart';
+import '../../../Apps/Modules/hr_phelo/hr_pages/hr_people_management/employees/employee_page_wigets.dart/onboarding_form.dart';
 import '../../../Components/App_Theme/text_styles.dart';
 import '../../../Components/app_theme/colors.dart';
 import '../../../Functions/Users/app_user_model.dart';
@@ -22,6 +22,7 @@ class EmployeeCardGrid extends StatefulWidget {
   final void Function(String) onSearchChanged;
   final void Function(String?) onDepartmentChanged;
   final void Function(UserModel)? onCardTap;
+  final VoidCallback newEmployee;
 
   const EmployeeCardGrid({
     super.key,
@@ -33,6 +34,7 @@ class EmployeeCardGrid extends StatefulWidget {
     required this.onSearchChanged,
     required this.onDepartmentChanged,
     this.onCardTap,
+    required this.newEmployee,
   });
 
   @override
@@ -87,7 +89,7 @@ class _EmployeeCardGridState extends State<EmployeeCardGrid> {
                   ),
                   const SizedBox(width: 8),
                   MyOutlinedMenuButton(
-                    onPressed: () {},
+                    onPressed: widget.newEmployee,
                     btnText: 'New employee',
                     btnIcon: UniconsLine.user_plus,
                     btnAccent: myMainColor,
@@ -121,7 +123,7 @@ class _EmployeeCardGridState extends State<EmployeeCardGrid> {
                         crossAxisCount: crossCount,
                         crossAxisSpacing: 16,
                         mainAxisSpacing: 16,
-                        childAspectRatio: 0.675,
+                        mainAxisExtent: 335,
                       ),
                       itemCount: widget.users.length,
                       itemBuilder: (context, index) => EmployeeCard(

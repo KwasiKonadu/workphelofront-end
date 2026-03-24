@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hr_phelo/components/app_theme/text_styles.dart';
 
+import '../../app_theme/misc.dart';
 import 'navigation.dart';
 
 Widget navigationTile({
@@ -20,10 +21,10 @@ Widget navigationTile({
     margin: EdgeInsets.symmetric(horizontal: 8, vertical: 1),
     decoration: BoxDecoration(
       color: isSelected ? accent.withAlpha(20) : Colors.transparent,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(appRadius),
     ),
     child: InkWell(
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(appRadius),
       onTap: onTap,
       hoverColor: accent.withAlpha(10),
       splashColor: accent.withAlpha(20),

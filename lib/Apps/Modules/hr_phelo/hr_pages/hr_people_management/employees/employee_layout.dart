@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/employees/employee_page_wigets.dart/onboarding_form.dart';
 import 'package:hr_phelo/Functions/Users/app_user_model.dart';
 
 import '../../../../../../Functions/company_functions/departments/department_state.dart';
 import '../../../../../../Functions/company_functions/onboarding_function/user_state.dart';
 import '../../../../../../components/app_widgets/lists/app_grid.dart';
+import '../../../../../../components/form_components/my_side_panel.dart';
 
 class EmployeeLayout extends ConsumerStatefulWidget {
   final AppUser currentUser;
@@ -17,6 +19,8 @@ class EmployeeLayout extends ConsumerStatefulWidget {
 class _EmployeeLayoutState extends ConsumerState<EmployeeLayout> {
   String _search = '';
   String? _departmentFilter;
+  late final _panel = SidePanelController();
+  final _formKey = GlobalKey<OnboardingFormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +54,20 @@ class _EmployeeLayoutState extends ConsumerState<EmployeeLayout> {
       departmentFilter: _departmentFilter,
       onSearchChanged: (v) => setState(() => _search = v),
       onDepartmentChanged: (v) => setState(() => _departmentFilter = v),
+
+      newEmployee: () => _panel.show(
+        context: context,
+        formTitle: 'COMPANY ONBOARDING FORM',
+        onPressed: () {
+          final user = _formKey.currentState?.submit();
+          if (user == null) return;
+          ref.read(userProvider.notifier).addUser(user);
+          _panel.close();
+        },
+        secOnPressed: () => _formKey.currentState?.reset(),
+        // secOnPressed: () => _formKey.currentState?._reset(),
+        child: OnboardingForm(key: _formKey, currentUser: widget.currentUser),
+      ),
       onCardTap: (user) {
         // open employee detail panel
       },

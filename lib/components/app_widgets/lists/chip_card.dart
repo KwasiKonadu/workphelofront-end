@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../Components/App_Theme/text_styles.dart';
 import '../../../Functions/company_functions/departments/department_model.dart';
 import '../../../Functions/company_functions/permissions/app_module.dart';
+import '../../app_theme/misc.dart';
 
 class ChipCard extends StatefulWidget {
   final String name;
@@ -88,7 +89,7 @@ class _ChipCardState extends State<ChipCard> {
                   : cs.outlineVariant,
               width: widget.isSelected ? 1.0 : 0.5,
             ),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(appRadius),
           ),
           child: Row(
             children: [
@@ -135,7 +136,7 @@ class _ChipCardState extends State<ChipCard> {
                   ),
                   decoration: BoxDecoration(
                     color: widget.color.withAlpha(20),
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(appRadius),
                   ),
                   child: Text(
                     'locked',
@@ -191,7 +192,7 @@ class AddExtraCardChipState extends State<AddExtraCardChip> {
               width: 0.5,
               strokeAlign: BorderSide.strokeAlignInside,
             ),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(appRadius),
           ),
           child: Row(
             children: [

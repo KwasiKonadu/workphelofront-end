@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hr_phelo/Components/App_Theme/text_styles.dart';
 
 import '../app_theme/colors.dart';
+import '../app_theme/misc.dart';
 import '../app_theme/padding.dart';
 
 class MyButton extends StatelessWidget {
@@ -26,10 +27,10 @@ class MyButton extends StatelessWidget {
       padding: formWidgetPadding,
       child: Card(
         color: widgetColor(context),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(appRadius)),
         child: InkWell(
           onTap: isLoading ? null : btnOnPressed,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(appRadius),
           child: SizedBox(
             height: 50,
             child: Center(
@@ -94,10 +95,10 @@ class MySecButton extends StatelessWidget {
       child: Card(
         elevation: 0,
         color: ColorScheme.of(context).surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(appRadius)),
         child: InkWell(
           onTap: isLoading ? null : btnOnPressed,
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(appRadius),
           child: SizedBox(
             height: 50,
             child: Center(
@@ -153,10 +154,10 @@ class WidgetButton extends StatelessWidget {
     return Card(
       elevation: 0,
       color: Colors.grey.withAlpha(20),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(appRadius)),
       child: InkWell(
         onTap: btnPressed,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(appRadius),
         child: SizedBox(
           height: 50,
           child: Padding(
@@ -189,7 +190,7 @@ class MyTextButton extends StatelessWidget {
     return TextButton(
       onPressed: txtBtnOnPressed,
       style: TextButton.styleFrom(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(appRadius)),
         splashFactory: NoSplash.splashFactory,
       ),
       child: Text(txtBtnText, style: myMainTextStyle(context)),
@@ -229,7 +230,7 @@ class _MyOutlinedButtonState extends State<MyOutlinedButton> {
         duration: const Duration(milliseconds: 180),
         curve: Curves.easeOut,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(appRadius),
           boxShadow: widget.isHovered
               ? [
                   BoxShadow(
@@ -259,7 +260,7 @@ class _MyOutlinedButtonState extends State<MyOutlinedButton> {
                     vertical: 14,
                   ),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(appRadius),
                   ),
                   elevation: 0,
                   minimumSize: const Size(140, 52),
@@ -325,7 +326,7 @@ class _MyOutlinedMenuButtonState extends State<MyOutlinedMenuButton> {
       duration: const Duration(milliseconds: 180),
       curve: Curves.easeOut,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(appRadius),
         boxShadow: widget.isHovered
             ? [
                 BoxShadow(
@@ -350,7 +351,7 @@ class _MyOutlinedMenuButtonState extends State<MyOutlinedMenuButton> {
               side: BorderSide(color: cs.outline, width: 1.5),
               padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(appRadius),
               ),
               elevation: 0,
               minimumSize: const Size(140, 40),

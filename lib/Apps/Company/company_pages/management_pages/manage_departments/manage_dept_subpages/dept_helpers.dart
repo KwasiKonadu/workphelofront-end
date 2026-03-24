@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../../Components/App_Theme/text_styles.dart';
 import '../../../../../../Functions/company_functions/onboarding_function/onboarding_model.dart';
+import '../../../../../../components/app_theme/misc.dart';
 
 class SectionLabel extends StatelessWidget {
   final String label;
@@ -92,7 +93,7 @@ class EmptyDetail extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: cs.surfaceContainerHighest,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(appRadius),
       ),
       child: Center(
         child: Text(

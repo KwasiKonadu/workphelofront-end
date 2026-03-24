@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hr_phelo/Functions/Super_Admin_Functions/company_state.dart';
 import 'package:hr_phelo/Apps/Super_Admin/Pages/company_onboarding_form.dart';
 import 'package:hr_phelo/Functions/Users/app_user_model.dart';
+import 'package:hr_phelo/components/app_theme/padding.dart';
 import 'package:hr_phelo/components/app_widgets/cards/title_card.dart';
 import 'package:intl/intl.dart';
 import 'package:unicons/unicons.dart';
@@ -42,7 +43,6 @@ class _SuperAdminPortalState extends ConsumerState<SuperAdminPortal> {
         Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
       }
     });
-    
 
     // Move these above the stats list
     final totalCompanies = companies.length;
@@ -59,28 +59,37 @@ class _SuperAdminPortalState extends ConsumerState<SuperAdminPortal> {
       return d != null && d.month == currentMonth && d.year == currentYear;
     }).length;
 
-    const double csize = 0.95;
     return Column(
       children: [
         TitleCard(
-            introText: 'Good morning, ${widget.currentUser.fullName}',
-            companyName: widget.currentUser.companyName,
-            statTitle1: 'Total Companies',
-            stat1: statDisplay('$totalCompanies'),
-            statTitle2: 'Active Companies',
-            stat2: statDisplay('$activeCompanies'),
-            statTitle3: 'Inactive Companies',
-            stat3: statDisplay('$inactiveCompanies'),
-            statTitle4:
-                'Companies for ${DateFormat('MMMM').format(DateTime.now())}',
-            stat4: statDisplay('$newThisMonth'),
-          ),
+          companyName: widget.currentUser.companyName,
+          introText: 'Good morning, ${widget.currentUser.fullName}',
+          stats: [
+            TitleCardStat(
+              title: 'Total Companies',
+              value: statDisplay('$totalCompanies'),
+            ),
+            TitleCardStat(
+              title: 'Active Companies',
+              value: statDisplay('$activeCompanies'),
+            ),
+            TitleCardStat(
+              title: 'Inactive Companies',
+              value: statDisplay('$inactiveCompanies'),
+            ),
+            TitleCardStat(
+              title: 'New this ${DateFormat('MMMM').format(DateTime.now())}',
+              value: statDisplay('$newThisMonth'),
+            ),
+          ],
+        ),
+
         Expanded(
-          child: SizedBox(
-            width: MediaQuery.sizeOf(context).width * csize,
+          child: Padding(
+            padding: menuCardpadding,
             child: AppTableWidget(
               headerTitle: 'Companies',
-              headerTrailing: MyOutlinedButton(
+              headerTrailing: MyOutlinedMenuButton(
                 btnText: 'Onboard Company',
                 btnIcon: UniconsLine.user_plus,
                 btnAccent: myMainColor,
@@ -102,7 +111,10 @@ class _SuperAdminPortalState extends ConsumerState<SuperAdminPortal> {
                 ),
               ),
               columns: const [
-                TableColumn(header: 'Company Details', width: FlexColumnWidth(2)),
+                TableColumn(
+                  header: 'Company Details',
+                  width: FlexColumnWidth(2),
+                ),
                 TableColumn(header: 'Administrator', width: FlexColumnWidth(2)),
                 TableColumn(header: 'Contact', width: FlexColumnWidth(1)),
                 TableColumn(header: 'Date Created', width: FlexColumnWidth(1)),

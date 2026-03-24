@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:unicons/unicons.dart';
 
+import '../../../../../../../components/app_theme/misc.dart';
 import '../../../../../../../components/app_theme/text_styles.dart';
 import '../../../../../../../components/app_widgets/user_avators.dart';
 
@@ -88,7 +89,7 @@ Widget _buildStatusChip(BuildContext context, String status) {
     padding: const EdgeInsets.all(12),
     decoration: BoxDecoration(
       color: color.withAlpha(15),
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(appRadius),
     ),
     child: Center(
       child: Text(

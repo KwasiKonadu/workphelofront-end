@@ -4,6 +4,7 @@ import 'package:hr_phelo/components/app_widgets/cards/display_card.dart';
 
 import '../../../Components/App_Theme/text_styles.dart';
 import '../../../Functions/Super_Admin_Functions/onboard_company_model.dart';
+import '../../app_theme/misc.dart';
 
 class CompanyDetailCard extends StatefulWidget {
   final CompanyModel company;
@@ -29,7 +30,7 @@ class _CompanyDetailCardState extends State<CompanyDetailCard> {
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: cs.surfaceContainerLow,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(appRadius),
               border: Border.all(color: cs.outline),
             ),
             child: Column(

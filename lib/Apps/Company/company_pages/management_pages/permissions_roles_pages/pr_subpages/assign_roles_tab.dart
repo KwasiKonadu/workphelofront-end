@@ -7,6 +7,7 @@ import '../../../../../../Functions/Users/app_user_model.dart';
 import '../../../../../../Functions/company_functions/onboarding_function/onboarding_model.dart';
 import '../../../../../../Functions/company_functions/onboarding_function/user_state.dart';
 import '../../../../../../Functions/company_functions/permissions/roles_state.dart';
+import '../../../../../../components/app_theme/misc.dart';
 import '../../../../../../components/app_theme/text_styles.dart';
 import '../../../../../../components/form_components/assign_panel.dart';
 import '../../../../../../components/form_components/text_fields.dart';
@@ -61,7 +62,7 @@ class AssignRolesTabState extends ConsumerState<AssignRolesTab> {
                     itemBuilder: (context, index) {
                       final user = filtered[index];
                       return InkWell(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(appRadius),
                         onTap: () => setState(() => _selectedEmployee = user),
                         child: Container(
                           decoration: _selectedEmployee?.email == user.email

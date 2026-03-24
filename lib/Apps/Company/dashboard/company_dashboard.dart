@@ -12,6 +12,7 @@ import '../../../Functions/Users/app_user_model.dart';
 import '../../../Functions/Users/login_functions/auth_state.dart';
 import '../../../Functions/company_functions/onboarding_function/onboarding_model.dart';
 import '../../../Functions/company_functions/onboarding_function/user_state.dart';
+import '../../../components/app_theme/misc.dart';
 import '../../../components/app_widgets/cards/title_card.dart';
 import '../../../components/app_widgets/lists/horizontal_navigation_tabs.dart';
 import '../../../pages/log_out/user_details_popup.dart';
@@ -30,7 +31,6 @@ class _CompanyDashboardState extends ConsumerState<CompanyDashboard> {
   int _currentIndex = 0;
   int _managementSubIndex = -1;
   String statDisplay(String value) => value == '0' ? '-' : value;
-  
 
   @override
   void didChangeDependencies() {
@@ -86,18 +86,12 @@ class _CompanyDashboardState extends ConsumerState<CompanyDashboard> {
               isSelected: _currentIndex == 1,
               onTap: () => setState(() => _currentIndex = 1),
             ),
-            AppNavItem(
-              label: 'Reports',
-              icon: UniconsLine.chart_bar,
-              isSelected: _currentIndex == 2,
-              onTap: () => setState(() => _currentIndex = 2),
-            ),
 
             AppNavItem(
               label: 'Management',
               icon: UniconsLine.building,
-              isSelected: _currentIndex == 3,
-              onTap: () => setState(() => _currentIndex = 3),
+              isSelected: _currentIndex == 2,
+              onTap: () => setState(() => _currentIndex = 2),
             ),
           ],
         ),
@@ -118,7 +112,7 @@ class _CompanyDashboardState extends ConsumerState<CompanyDashboard> {
                 '/login',
                 (route) => false,
               ),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(appRadius),
               child: UserDashIcon(
                 onIconPressed: (details) {
                   UserDetailsPopup.show(
@@ -145,38 +139,41 @@ class _CompanyDashboardState extends ConsumerState<CompanyDashboard> {
       body: Column(
         children: [
           TitleCard(
-            introText: user.companyName,
-            companyName: 'Welcome, ${user.fullName}',
-            statTitle1: 'Total Employees',
-            stat1: statDisplay(users.length.toString()),
-            statTitle2: 'Active Employees',
-            stat2: statDisplay(
-              users
-                  .where((u) => u.status == EmploymentStatus.active)
-                  .length
-                  .toString(),
-            ),
-            statTitle3: 'Pending Leave',
-            stat3: statDisplay(
-              ref
-                  .watch(userProvider)
-                  .users
-                  .where((u) => u.status == EmploymentStatus.onLeave)
-                  .length
-                  .toString(),
-            ),
-            statTitle4: 'Company Assets',
-            stat4: '-',
+            companyName: user.companyName,
+            introText: 'Good morning, ${user.fullName}',
+            stats: [
+              TitleCardStat(
+                title: 'Employees',
+                value: statDisplay(users.length.toString()),
+              ),
+              TitleCardStat(
+                title: 'On Leave',
+                value: statDisplay(
+                  users
+                      .where((u) => u.status == EmploymentStatus.active)
+                      .length
+                      .toString(),
+                ),
+              ),
+              TitleCardStat(
+                title: 'Assets',
+                value: statDisplay(
+                  ref
+                      .watch(userProvider)
+                      .users
+                      .where((u) => u.status == EmploymentStatus.onLeave)
+                      .length
+                      .toString(),
+                ),
+              ),
+              TitleCardStat(title: 'Company Assets', value: '-'),
+            ],
           ),
+
           Expanded(
             child: IndexedStack(
               index: _currentIndex,
-              children: [
-                _portalPage(),
-                _modulesPage(),
-                _reportsPage(),
-                _managementPage(),
-              ],
+              children: [_portalPage(), _modulesPage(), _managementPage()],
             ),
           ),
         ],
@@ -190,10 +187,6 @@ class _CompanyDashboardState extends ConsumerState<CompanyDashboard> {
 
   Widget _modulesPage() {
     return Center(child: ModuleOptions(currentUser: user));
-  }
-
-  Widget _reportsPage() {
-    return const Center(child: Text('Reports'));
   }
 
   Widget _managementPage() {

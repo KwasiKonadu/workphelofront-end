@@ -7,6 +7,7 @@ import '../../../../../../Functions/Users/app_user_model.dart';
 import '../../../../../../Functions/company_functions/departments/department_model.dart';
 import '../../../../../../Functions/company_functions/departments/department_state.dart';
 import '../../../../../../Functions/company_functions/onboarding_function/user_state.dart';
+import '../../../../../../components/app_theme/misc.dart';
 import '../../../../../../components/form_components/my_side_panel.dart';
 import 'dept_forms.dart';
 import 'dept_helpers.dart';
@@ -98,7 +99,7 @@ class DeptDetailState extends ConsumerState<DeptDetail> {
               height: 40,
               decoration: BoxDecoration(
                 color: dept.color.withAlpha(20),
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(appRadius),
               ),
               child: Icon(dept.icon, color: dept.color, size: 20),
             ),

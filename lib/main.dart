@@ -25,9 +25,12 @@ class MyApp extends StatelessWidget {
         '/home': (context) => DashboardPage(),
         '/login': (context) => LoginPage(),
         '/get-started': (context) {
-          final user = ModalRoute.of(context)?.settings.arguments as AppUser;
-          return GetStartedPage(currentUser: user);
-        },
+  final args = ModalRoute.of(context)?.settings.arguments;
+  if (args is AppUser) {
+    return GetStartedPage(currentUser: args);
+  }
+  return const LoginPage();
+},
       },
       title: 'Work Phelo',
       debugShowCheckedModeBanner: false,

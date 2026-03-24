@@ -8,6 +8,7 @@ import 'package:hr_phelo/components/form_components/my_buttons.dart';
 import '../../../../../../Functions/company_functions/departments/department_model.dart';
 import '../../../../../../Functions/company_functions/departments/department_state.dart';
 import '../../../../../../Functions/company_functions/onboarding_function/user_state.dart';
+import '../../../../../../components/app_theme/misc.dart';
 import '../../../../../../components/app_theme/text_styles.dart';
 
 class CreateDepartmentForm extends ConsumerStatefulWidget {
@@ -94,7 +95,7 @@ class _CreateDepartmentFormState extends ConsumerState<CreateDepartmentForm> {
                   Wrap(
                     spacing: 8,
                     children: departmentColors.map((c) {
-                      final isSelected = c.value == _selectedColor.value;
+                      final isSelected = c == _selectedColor;
                       return GestureDetector(
                         onTap: () => setState(() => _selectedColor = c),
                         child: Container(
@@ -133,7 +134,7 @@ class _CreateDepartmentFormState extends ConsumerState<CreateDepartmentForm> {
                             color: isSelected
                                 ? _selectedColor.withAlpha(30)
                                 : Colors.transparent,
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(appRadius),
                             border: Border.all(
                               color: isSelected
                                   ? _selectedColor

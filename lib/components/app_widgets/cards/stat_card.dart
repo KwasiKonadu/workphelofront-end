@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hr_phelo/Components/app_theme/text_styles.dart';
 import 'package:hr_phelo/components/app_theme/padding.dart';
 
+import '../../app_theme/misc.dart';
+
 class StatCard extends StatelessWidget {
   final String title;
   final String value;
@@ -21,7 +23,7 @@ class StatCard extends StatelessWidget {
     return Card.outlined(
       elevation: 2,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(appRadius),
         side: BorderSide(width: 1, color: accentColor.withAlpha(20)),
       ),
       child: Padding(

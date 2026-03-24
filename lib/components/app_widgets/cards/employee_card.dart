@@ -61,7 +61,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
           duration: const Duration(milliseconds: 180),
           decoration: BoxDecoration(
             color: cs.surface,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(appRadius),
             border: Border.all(
               color: _hovered ? cs.outlineVariant : cs.outline,
               width: 0.5,
@@ -135,7 +135,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
                     const SizedBox(height: 10),
                     myDivider(context),
                     const SizedBox(height: 10),
-
+                    // const Spacer(),
                     // ── Contact ─────────────────────────────
                     ContactRow(
                       icon: UniconsLine.envelope,

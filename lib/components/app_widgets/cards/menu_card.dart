@@ -57,14 +57,14 @@ class _MenuCardState extends State<MenuCard> {
           duration: const Duration(milliseconds: 280),
           curve: Curves.easeInOutCubicEmphasized,
           margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(appRadius)),
           child: AnimatedScale(
             scale: _isHovered ? 1.001 : 1.0,
             duration: const Duration(milliseconds: 280),
             curve: Curves.easeOutCubic,
             child: Material(
               color: colorScheme.surface,
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(appRadius),
               clipBehavior: Clip.antiAlias,
               child: Container(
                 decoration: BoxDecoration(
@@ -72,7 +72,7 @@ class _MenuCardState extends State<MenuCard> {
                     color: _isHovered ? accent : colorScheme.outline,
                     width: _isHovered ? 1.0 : 0.7,
                   ),
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(appRadius),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(24, 24, 24, 20),
@@ -84,7 +84,7 @@ class _MenuCardState extends State<MenuCard> {
                         children: [
                           Card.outlined(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
+                              borderRadius: BorderRadius.circular(appRadius),
                               side: BorderSide(
                                 width: 1,
                                 color: _isHovered
@@ -194,7 +194,7 @@ class _InfoChip extends StatelessWidget {
       decoration: BoxDecoration(
         color: accentColor.withAlpha(12),
         border: Border.all(color: accentColor.withAlpha(30), width: 1),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(appRadius),
       ),
       child: Text(
         label,

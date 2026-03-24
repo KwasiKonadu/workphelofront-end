@@ -7,42 +7,32 @@ import 'package:unicons/unicons.dart';
 
 import '../../../Apps/Super_Admin/sa_widgets/company_onboarded_list.dart';
 import '../../../Functions/Super_Admin_Functions/onboard_company_model.dart';
+import '../../app_theme/misc.dart';
 
-class TitleCard extends StatefulWidget {
+class TitleCardStat {
+  final String title;
+  final String value;
+  const TitleCardStat({required this.title, required this.value});
+}
+
+class TitleCard extends StatelessWidget {
   final String companyName;
   final String introText;
-  final String? statTitle1;
-  final String? stat1;
-  final String? statTitle2;
-  final String? stat2;
-  final String? statTitle3;
-  final String? stat3;
-  final String? statTitle4;
-  final String? stat4;
+  final List<TitleCardStat> stats;
+
   const TitleCard({
     super.key,
     required this.introText,
     required this.companyName,
-    this.statTitle1,
-    this.stat1,
-    this.statTitle2,
-    this.stat2,
-    this.statTitle3,
-    this.stat3,
-    this.statTitle4,
-    this.stat4,
+    this.stats = const [],
   });
 
   @override
-  State<TitleCard> createState() => _TitleCardState();
-}
-
-class _TitleCardState extends State<TitleCard> {
-  @override
   Widget build(BuildContext context) {
-    const double csize = 0.47;
+    final cs = ColorScheme.of(context);
+
     return Padding(
-      padding: menuItemPadding,
+      padding: formPadding,
       child: Container(
         padding: myDisplayContentPadding,
         decoration: BoxDecoration(
@@ -51,103 +41,77 @@ class _TitleCardState extends State<TitleCard> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(appRadius),
         ),
-        child: Wrap(
-          children: [
-            SizedBox(
-              width: MediaQuery.sizeOf(context).width * csize,
-              child: ListTile(
-                title: Text(
-                  widget.companyName,
-                  style: myMainTextStyle(
-                    context,
-                  ).copyWith(color: Colors.amber[900]),
-                ),
-                subtitle: Text(
-                  widget.introText,
-                  style: myTitleTextStyle(
-                    context,
-                  ).copyWith(color: ColorScheme.of(context).surface),
-                ),
-              ),
-            ),
-            SizedBox(
-              width: MediaQuery.sizeOf(context).width * csize,
-              child: Row(
-                children: [
-                  SizedBox(
-                    width: MediaQuery.sizeOf(context).width * csize * .25,
-                    child: ListTile(
-                      title: Text(
-                        widget.statTitle1 ?? '',
-                        style: myNoInfoStyle(
-                          context,
-                        ).copyWith(color: ColorScheme.of(context).surface),
-                      ),
-                      subtitle: Text(
-                        widget.stat1 ?? '',
-                        style: myMainTextStyle(
-                          context,
-                        ).copyWith(color: ColorScheme.of(context).surface),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.sizeOf(context).width * csize * .25,
-                    child: ListTile(
-                      title: Text(
-                        widget.statTitle2 ?? '',
-                        style: myNoInfoStyle(
-                          context,
-                        ).copyWith(color: ColorScheme.of(context).surface),
-                      ),
-                      subtitle: Text(
-                        widget.stat2 ?? '',
-                        style: myMainTextStyle(
-                          context,
-                        ).copyWith(color: ColorScheme.of(context).surface),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.sizeOf(context).width * csize * .25,
-                    child: ListTile(
-                      title: Text(
-                        widget.statTitle3 ?? '',
-                        style: myNoInfoStyle(
-                          context,
-                        ).copyWith(color: ColorScheme.of(context).surface),
-                      ),
-                      subtitle: Text(
-                        widget.stat3 ?? '',
-                        style: myMainTextStyle(
-                          context,
-                        ).copyWith(color: ColorScheme.of(context).surface),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: MediaQuery.sizeOf(context).width * csize * .25,
-                    child: ListTile(
-                      title: Text(
-                        widget.statTitle4 ?? '',
-                        style: myNoInfoStyle(
-                          context,
-                        ).copyWith(color: ColorScheme.of(context).surface),
-                      ),
-                      subtitle: Text(
-                        widget.stat4 ?? '',
-                        style: myMainTextStyle(
-                          context,
-                        ).copyWith(color: ColorScheme.of(context).surface),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final isWide = constraints.maxWidth >= 720;
+
+            return isWide
+                ? Row(
+                    children: [
+                      Expanded(child: _intro(context, cs)),
+                      if (stats.isNotEmpty) _statsRow(context, cs),
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _intro(context, cs),
+                      if (stats.isNotEmpty) ...[
+                        const SizedBox(height: 16),
+                        _statsRow(context, cs),
+                      ],
+                    ],
+                  );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _intro(BuildContext context, ColorScheme cs) {
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      title: Text(
+        companyName,
+        style: myMainTextStyle(context).copyWith(color: Colors.amber[900]),
+      ),
+      subtitle: Text(
+        introText,
+        style: myTitleTextStyle(context).copyWith(color: cs.surface),
+      ),
+    );
+  }
+
+  Widget _statsRow(BuildContext context, ColorScheme cs) {
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: stats.map((s) => _StatTile(stat: s, cs: cs)).toList(),
+    );
+  }
+}
+
+class _StatTile extends StatelessWidget {
+  final TitleCardStat stat;
+  final ColorScheme cs;
+
+  const _StatTile({required this.stat, required this.cs});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 120,
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        title: Text(
+          stat.title,
+          style: myNoInfoStyle(context).copyWith(color: cs.surface),
+        ),
+        subtitle: Text(
+          stat.value,
+          style: myMainTextStyle(context).copyWith(color: cs.surface),
         ),
       ),
     );
@@ -177,7 +141,7 @@ class _WelcomeCardState extends State<WelcomeCard> {
             begin: Alignment.centerLeft,
             end: Alignment.centerRight,
           ),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(appRadius),
         ),
         child: Row(
           children: [
@@ -236,19 +200,16 @@ class _WelcomeCardAltState extends State<WelcomeCardAlt> {
   }
 }
 
-
 class CompanyCard extends StatelessWidget {
   final CompanyModel company;
   final VoidCallback onDelete;
   final VoidCallback onToggleStatus;
-  final VoidCallback onBack;
 
   const CompanyCard({
     super.key,
     required this.company,
     required this.onDelete,
     required this.onToggleStatus,
-    required this.onBack,
   });
 
   @override
@@ -261,7 +222,7 @@ class CompanyCard extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: cs.surface,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(appRadius),
           border: Border.all(color: cs.outline.withAlpha(70)),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -270,10 +231,6 @@ class CompanyCard extends StatelessWidget {
             // Left — company info
             Expanded(
               child: ListTile(
-                leading: IconButton(
-                  onPressed: onBack,
-                  icon: Icon(UniconsLine.estate),
-                ),
                 title: Row(
                   children: [
                     Text(

@@ -4,8 +4,8 @@ import 'package:hr_phelo/Functions/Super_Admin_Functions/onboard_company_model.d
 import 'package:hr_phelo/Functions/Users/app_user_model.dart';
 import 'package:hr_phelo/pages/login_page/login_utils/validators.dart';
 
-import '../../../components/app_theme/text_styles.dart';
 import '../../../components/form_components/text_fields.dart';
+import '../../Modules/hr_phelo/hr_pages/hr_people_management/employees/employee_page_wigets.dart/onboarding_form.dart';
 
 class CompanyOnboardingForm extends StatefulWidget {
   final AppUser currentUser;
@@ -93,8 +93,8 @@ class CompanyOnboardingFormState extends State<CompanyOnboardingForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _sectionHeader(context, 'Company Information'),
-              const SizedBox(height: 10),
+              sectionHeader(context, 'Company Information'),
+              const SizedBox(height: 5),
               Wrap(
                 children: [
                   _field(
@@ -194,8 +194,8 @@ class CompanyOnboardingFormState extends State<CompanyOnboardingForm> {
                 ],
               ),
               const SizedBox(height: 10),
-              _sectionHeader(context, 'Administrator Information'),
-              const SizedBox(height: 10),
+              sectionHeader(context, 'Administrator Information'),
+              const SizedBox(height: 5),
               Wrap(
                 children: [
                   _field(
@@ -267,21 +267,6 @@ class CompanyOnboardingFormState extends State<CompanyOnboardingForm> {
     return SizedBox(
       width: MediaQuery.sizeOf(context).width * csize,
       child: child,
-    );
-  }
-
-  Widget _sectionHeader(BuildContext context, String title) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10.0),
-      child: Text(
-        title.toUpperCase(),
-        style: myMainTextStyle(context).copyWith(
-          fontSize: 13,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 1.1,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-      ),
     );
   }
 }

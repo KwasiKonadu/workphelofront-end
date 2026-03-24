@@ -394,7 +394,7 @@ class MyDropdownField extends StatelessWidget {
             isExpanded: true,
             alignment: Alignment.centerLeft,
             elevation: 4,
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(appRadius),
             dropdownColor: cs.surfaceContainer,
             style: myTextFieldStyle(context),
             icon: Icon(
@@ -523,7 +523,7 @@ class _MyDatePickerState extends State<MyDatePicker> {
                 context,
               ).colorScheme.surfaceContainerLowest,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(appRadius),
               ),
             ),
           ),
@@ -613,7 +613,7 @@ class MyCheckBox extends StatelessWidget {
                     color: value ? accent : cs.outline,
                     width: 1.5,
                   ),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(appRadius),
                 ),
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 180),

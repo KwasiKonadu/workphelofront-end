@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/onboarding/onboarding_widgets/onboarding_form.dart';
+import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/employees/employee_page_wigets.dart/onboarding_form.dart';
 import 'package:hr_phelo/Functions/Users/app_user_model.dart';
 import 'package:hr_phelo/components/app_widgets/cards/display_card.dart';
 import 'package:hr_phelo/components/app_widgets/cards/title_card.dart';

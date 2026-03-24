@@ -7,6 +7,7 @@ import '../../../../../Components/app_theme/padding.dart';
 import '../../../../../Functions/Users/app_user_model.dart';
 import '../../../../../Functions/company_functions/departments/department_model.dart';
 import '../../../../../Functions/company_functions/departments/department_state.dart';
+import '../../../../../components/app_theme/misc.dart';
 import '../../../../../components/app_widgets/lists/chip_card.dart';
 import 'manage_dept_subpages/dept_helpers.dart';
 import 'manage_dept_subpages/dept_list_details.dart';
@@ -102,7 +103,7 @@ class _DepartmentsListState extends ConsumerState<DepartmentsList> {
                   padding: myContentPadding,
                   decoration: BoxDecoration(
                     color: cs.surfaceContainerHighest,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(appRadius),
                   ),
                   child: DeptDetail(
                     key: ValueKey(_selectedDepartment!.id),

@@ -9,6 +9,7 @@ import 'package:unicons/unicons.dart';
 
 import '../../Functions/Users/app_user_model.dart';
 import '../../Functions/Users/login_functions/auth_state.dart';
+import '../../components/app_theme/misc.dart';
 import '../../components/app_widgets/user_avators.dart';
 import '../../pages/log_out/user_details_popup.dart';
 
@@ -77,7 +78,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                 '/login',
                 (route) => false,
               ),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(appRadius),
               child: UserDashIcon(
                 onIconPressed: (details) {
                   UserDetailsPopup.show(

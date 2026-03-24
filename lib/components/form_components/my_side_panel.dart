@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_phelo/Components/app_theme/misc.dart';
+import 'package:hr_phelo/Components/app_theme/padding.dart';
 import 'package:hr_phelo/Components/app_theme/text_styles.dart';
 import 'package:hr_phelo/components/form_components/my_buttons.dart';
 import 'package:unicons/unicons.dart';
@@ -128,25 +129,39 @@ class _AppSidePanelState extends State<AppSidePanel>
                           // Content
                           Expanded(child: widget.child),
                           myDivider(context),
-                          Row(
-                            children: [
-                              Flexible(
-                                child: MyOutlinedButton(
-                                  onPressed: widget.secBtnOnPressed,
-                                  btnText: 'Reset',
-                                  btnIcon: UniconsLine.times_circle,
-                                  btnAccent: ColorScheme.of(context).error,
-                                  isHovered: false,
+                          Padding(
+                            padding: myContentPadding,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Flexible(
+                                  child: MyOutlinedMenuButton(
+                                    onPressed: widget.secBtnOnPressed,
+                                    btnText: 'Reset',
+                                    btnIcon: UniconsLine.times_circle,
+                                    btnAccent: ColorScheme.of(context).error,
+                                    isHovered: false,
+                                  ),
                                 ),
-                              ),
+                                Padding(padding: myCardPadding),
+                                Flexible(
+                                  child: MyOutlinedMenuButton(
+                                    onPressed: widget.btnOnPressed,
+                                    btnText: 'Submit',
+                                    btnIcon: UniconsLine.user_plus,
+                                    btnAccent: ColorScheme.of(context).primary,
+                                    isHovered: false,
+                                  ),
+                                ),
 
-                              Flexible(
-                                child: MyButton(
-                                  btnText: 'Submit',
-                                  btnOnPressed: widget.btnOnPressed,
-                                ),
-                              ),
-                            ],
+                                // Flexible(
+                                //   child: MyButton(
+                                //     btnText: 'Submit',
+                                //     btnOnPressed: widget.btnOnPressed,
+                                //   ),
+                                // ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

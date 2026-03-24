@@ -12,6 +12,8 @@ Divider myDivider(BuildContext context) => Divider(
   color: ColorScheme.of(context).outline,
 );
 
+final double appRadius = 8;
+
 final List<String> gender = ['Male', 'Female'];
 
 final List<String> maritalStatus = ['Single', 'Married', 'Divorced'];
@@ -89,23 +91,23 @@ InputDecoration appTextFieldDecoration(
         : null,
 
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(appRadius),
       borderSide: BorderSide(color: cs.outline),
     ),
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(appRadius),
       borderSide: BorderSide(color: cs.primary.withAlpha(70), width: 1),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(appRadius),
       borderSide: BorderSide(color: myMainColor.withAlpha(70), width: 2),
     ),
     errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(appRadius),
       borderSide: const BorderSide(color: Colors.red, width: 1),
     ),
     focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(appRadius),
       borderSide: const BorderSide(color: Colors.redAccent, width: 2),
     ),
   );

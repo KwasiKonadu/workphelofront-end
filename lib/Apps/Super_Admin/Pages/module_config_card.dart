@@ -7,6 +7,7 @@ import 'package:unicons/unicons.dart';
 import '../../../Components/App_Theme/text_styles.dart';
 import '../../../Components/app_theme/colors.dart';
 import '../../../Functions/Super_Admin_Functions/company_state.dart';
+import '../../../components/app_theme/misc.dart';
 import '../../../components/form_components/my_buttons.dart';
 
 class ModuleConfigCard extends ConsumerStatefulWidget {
@@ -76,22 +77,26 @@ class _ModuleConfigCardState extends ConsumerState<ModuleConfigCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          ListTile(
-            title: Text(
-              'Module Configuration',
-              style: myMainTextStyle(context).copyWith(
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
-                color: cs.onSurface,
-              ),
+          Text(
+            'Module Configuration',
+            style: myMainTextStyle(context).copyWith(
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+              color: cs.onSurface,
             ),
-            subtitle: Text(
-              'Enable or disable modules available to this company.',
-              style: myNoInfoStyle(
-                context,
-              ).copyWith(color: cs.onSurfaceVariant),
-            ),
-            trailing: MyOutlinedButton(
+          ),
+
+          Text(
+            'Enable or disable modules available to this company.',
+            style: myNoInfoStyle(context).copyWith(color: cs.onSurfaceVariant),
+          ),
+          // Header
+          Padding(padding: EdgeInsets.all(10)),
+          // Module list
+          ..._modules.map((module) => _buildModuleTile(context, module)),
+          Align(
+            alignment: AlignmentGeometry.centerRight,
+            child: MyOutlinedMenuButton(
               btnText: 'Save Configuration',
               btnIcon: UniconsLine.save,
               btnAccent: myMainColor,
@@ -99,10 +104,6 @@ class _ModuleConfigCardState extends ConsumerState<ModuleConfigCard> {
               onPressed: _save,
             ),
           ),
-          // Header
-
-          // Module list
-          ..._modules.map((module) => _buildModuleTile(context, module)),
         ],
       ),
     );
@@ -121,7 +122,7 @@ class _ModuleConfigCardState extends ConsumerState<ModuleConfigCard> {
             height: 48,
             decoration: BoxDecoration(
               color: myMainColor,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(appRadius),
             ),
             child: Icon(module.icon, color: Colors.white, size: 22),
           ),
@@ -161,3 +162,12 @@ class _ModuleConfigCardState extends ConsumerState<ModuleConfigCard> {
     );
   }
 }
+
+
+//  MyOutlinedButton(
+//               btnText: 'Save Configuration',
+//               btnIcon: UniconsLine.save,
+//               btnAccent: myMainColor,
+//               isHovered: true,
+//               onPressed: _save,
+//             ),

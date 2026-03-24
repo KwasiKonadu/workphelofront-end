@@ -6,6 +6,7 @@ import '../../../../../../Functions/Users/app_user_model.dart';
 import '../../../../../../Functions/company_functions/departments/department_model.dart';
 import '../../../../../../Functions/company_functions/departments/department_state.dart';
 import '../../../../../../Functions/company_functions/onboarding_function/user_state.dart';
+import '../../../../../../components/app_theme/misc.dart';
 
 class EditForm extends ConsumerStatefulWidget {
   final DepartmentModel dept;
@@ -23,8 +24,8 @@ class EditFormState extends ConsumerState<EditForm> {
   late Color _selectedColor;
   late IconData _selectedIcon;
   String _headSearch = '';
-  String? _pendingHeadEmail; // ← local head selection, not yet saved
-  bool _clearHead = false; // ← tracks if user wants to remove head
+  String? _pendingHeadEmail;
+  bool _clearHead = false;
 
   @override
   void initState() {
@@ -33,7 +34,7 @@ class EditFormState extends ConsumerState<EditForm> {
     _headSearchController = TextEditingController();
     _selectedColor = widget.dept.color;
     _selectedIcon = widget.dept.icon;
-    _pendingHeadEmail = widget.dept.headEmail; // ← seed with current head
+    _pendingHeadEmail = widget.dept.headEmail;
   }
 
   @override
@@ -126,7 +127,7 @@ class EditFormState extends ConsumerState<EditForm> {
         Wrap(
           spacing: 8,
           children: departmentColors.map((c) {
-            final isSelected = c.value == _selectedColor.value;
+            final isSelected = c == _selectedColor;
             return GestureDetector(
               onTap: () => setState(() => _selectedColor = c),
               child: Container(
@@ -161,7 +162,7 @@ class EditFormState extends ConsumerState<EditForm> {
                   color: isSelected
                       ? _selectedColor.withAlpha(30)
                       : Colors.transparent,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(appRadius),
                   border: Border.all(
                     color: isSelected ? _selectedColor : cs.outlineVariant,
                     width: 0.5,
@@ -179,13 +180,13 @@ class EditFormState extends ConsumerState<EditForm> {
         Text('Department head', style: myMainTextStyle(context)),
         const SizedBox(height: 8),
 
-        // Current head display — driven by local state, not provider
+        // Current head display
         if (displayHead != null) ...[
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
               color: _selectedColor.withAlpha(15),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(appRadius),
               border: Border.all(color: _selectedColor.withAlpha(60)),
             ),
             child: Row(
@@ -211,7 +212,6 @@ class EditFormState extends ConsumerState<EditForm> {
                   ),
                 ),
                 TextButton(
-                  // ← only marks for clearing, doesn't write to provider
                   onPressed: () => setState(() {
                     _clearHead = true;
                     _pendingHeadEmail = null;
@@ -265,14 +265,13 @@ class EditFormState extends ConsumerState<EditForm> {
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: cs.outlineVariant, width: 0.5),
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(appRadius),
             ),
             child: Column(
               children: filtered.map((u) {
                 final isSelected = _pendingHeadEmail == u.email;
                 return ListTile(
                   onTap: () => setState(() {
-                    // ← only updates local state, nothing written yet
                     _pendingHeadEmail = u.email;
                     _clearHead = false;
                     _headSearch = '';

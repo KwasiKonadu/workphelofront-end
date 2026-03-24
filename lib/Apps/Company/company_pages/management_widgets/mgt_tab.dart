@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../Components/App_Theme/text_styles.dart';
+import '../../../../components/app_theme/misc.dart';
 
 class MgtTab extends StatelessWidget {
   final String label;
@@ -25,7 +26,7 @@ class MgtTab extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           decoration: BoxDecoration(
             color: isSelected ? cs.surface : Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(appRadius),
             border: isSelected
                 ? Border.all(color: cs.outlineVariant, width: 0.5)
                 : null,

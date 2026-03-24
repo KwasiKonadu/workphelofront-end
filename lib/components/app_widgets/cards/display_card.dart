@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../app_theme/misc.dart';
 import '../../app_theme/padding.dart';
 
 class DisplayCard extends StatefulWidget {
@@ -54,7 +55,7 @@ class _DisplayCardState extends State<DisplayCard>
       elevation: 0,
       color: colorScheme.surfaceContainer,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(appRadius/2),
         side: BorderSide(color: effectiveBorderColor, width: 1.0),
       ),
       margin: EdgeInsets.zero,

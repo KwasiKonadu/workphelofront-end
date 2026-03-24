@@ -232,7 +232,7 @@ class _AppTableWidgetState extends State<AppTableWidget>
           // ── Column headers ───────────────────────────────
           Card(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(appRadius/2),
             ),
             elevation: 0,
             color: ColorScheme.of(context).outline.withAlpha(70),

@@ -36,6 +36,7 @@ List<NavItem> hrNavigationItems(
     title: 'Employees',
     pageIndex: 1,
     page: EmployeeLayout(currentUser: currentUser),
+    requiredModule: AppModule.onboarding
     // no requiredModule — always visible
   ),
 

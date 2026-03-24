@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:unicons/unicons.dart';
 
+import '../../../../../../../components/app_theme/misc.dart';
 import '../../../../../../../components/app_theme/text_styles.dart';
 import '../../../../../../../components/app_widgets/user_avators.dart';
 import '../../../../../../../Functions/company_functions/onboarding_function/onboarding_model.dart';
@@ -95,7 +96,7 @@ Widget _buildStatusChip(BuildContext context, EmploymentStatus status) {
     padding: const EdgeInsets.all(12),
     decoration: BoxDecoration(
       color: status.color.withAlpha(15),
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(appRadius),
     ),
     child: Center(
       child: Text(

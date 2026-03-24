@@ -54,7 +54,7 @@ class GetStartedPage extends ConsumerWidget {
                       context,
                       '/dashboard',
                       (route) => false,
-                      arguments: {'user': currentUser, 'initialIndex': 3},
+                      arguments: {'user': currentUser, 'initialIndex': 2},
                     );
                   },
                 ),
