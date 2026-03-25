@@ -50,6 +50,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
+    final (bg, fg, label) = widget.user.status.resolve(cs);
 
     return MouseRegion(
       onEnter: (_) => setState(() => _hovered = true),
@@ -104,14 +105,21 @@ class _EmployeeCardState extends State<EmployeeCard> {
                       overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: 2),
-                    Text(
-                      widget.user.jobTitle,
-                      style: myNoInfoStyle(
-                        context,
-                      ).copyWith(color: cs.onSurfaceVariant),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            widget.user.jobTitle,
+                            style: myNoInfoStyle(
+                              context,
+                            ).copyWith(color: cs.onSurfaceVariant),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        StatusBadge(bg: bg, fg: fg, label: label),
+                      ],
                     ),
+
                     const SizedBox(height: 10),
                     Row(
                       children: [
@@ -209,6 +217,37 @@ class ContactRow extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class StatusBadge extends StatelessWidget {
+  final Color bg;
+  final Color fg;
+  final String label;
+
+  const StatusBadge({
+    super.key,
+    required this.bg,
+    required this.fg,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      decoration: BoxDecoration(
+        color: bg,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        label,
+        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+          color: fg,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 }

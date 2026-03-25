@@ -45,23 +45,31 @@ class UserNotifier extends StateNotifier<UserState> {
   }
 
   void checkAndResetLeave(int defaultLeaveDays) {
-    final now = DateTime.now();
-    final updated = state.users.map((u) {
-      final anniversary = _nextAnniversary(u.hiredDate, now);
-      if (!now.isBefore(anniversary)) {
-        return u.copyWith(leaveDays: defaultLeaveDays);
-      }
-      return u;
-    }).toList();
-    state = state.copyWith(users: updated);
-  }
+  final now = DateTime.now();
+  final updated = state.users.map((u) {
+    final anniversary = DateTime(now.year, u.hiredDate.month, u.hiredDate.day);
+    final lastReset = u.lastLeaveReset;
+
+    final shouldReset = !now.isBefore(anniversary) &&
+        (lastReset == null || lastReset.year < now.year);
+
+    if (shouldReset) {
+      return u.copyWith(
+        leaveDays: defaultLeaveDays,
+        lastLeaveReset: now,
+      );
+    }
+    return u;
+  }).toList();
+  state = state.copyWith(users: updated);
+}
 
   void deductLeave(String email, int days) {
     state = state.copyWith(
       users: state.users.map((u) {
         if (u.email != email) return u;
         final remaining = (u.leaveDays ?? 0) - days;
-        return u.copyWith(leaveDays: remaining.clamp(0, remaining));
+        return u.copyWith(leaveDays: remaining < 0 ? 0 : remaining);
       }).toList(),
     );
   }

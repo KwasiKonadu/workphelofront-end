@@ -40,6 +40,15 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
         tenantSlug: '',
         companyStatus: '',
       );
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            '/login',
+            (route) => false,
+          );
+        }
+      });
     }
   }
 

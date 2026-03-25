@@ -17,6 +17,7 @@ class UserModel {
   final EmploymentStatus status;
   final String password;
   final String tenantSlug;
+  final DateTime? lastLeaveReset;
 
   UserModel({
     required this.firstName,
@@ -35,6 +36,7 @@ class UserModel {
     this.status = EmploymentStatus.active,
     required this.password,
     required this.tenantSlug,
+    this.lastLeaveReset,
   });
 
   String get fullName => '$firstName $lastName'.trim();
@@ -49,6 +51,7 @@ class UserModel {
     List<String>? systemRole,
     String? reportingManager,
     DateTime? hiredDate,
+    DateTime? lastLeaveReset,
     String? employmentType,
     double? annualSalary,
     String? asset,
@@ -67,6 +70,7 @@ class UserModel {
       systemRole: systemRole ?? this.systemRole,
       reportingManager: reportingManager ?? this.reportingManager,
       hiredDate: hiredDate ?? this.hiredDate,
+      lastLeaveReset: lastLeaveReset ?? this.lastLeaveReset,
       employmentType: employmentType ?? this.employmentType,
       annualSalary: annualSalary ?? this.annualSalary,
       asset: asset ?? this.asset,
@@ -92,6 +96,7 @@ class UserModel {
           ['employee'],
       reportingManager: map['reportingManager'] as String?,
       hiredDate: DateTime.parse(map['hiredDate'] as String),
+      lastLeaveReset: DateTime.parse(map['lastLeaveReset'] as String),
       employmentType: map['employmentType'] as String? ?? '',
       annualSalary: (map['annualSalary'] as num?)?.toDouble() ?? 0.0,
       asset: map['asset'] as String?,
@@ -112,6 +117,7 @@ class UserModel {
       systemRole: [],
       reportingManager: '',
       hiredDate: DateTime.now(),
+      lastLeaveReset: DateTime.now(),
       employmentType: '',
       annualSalary: 0.00,
       asset: '',
@@ -132,6 +138,7 @@ class UserModel {
       'systemRole': systemRole,
       'reportingManager': reportingManager,
       'hiredDate': hiredDate.toIso8601String(),
+      'lastLeaveReset': lastLeaveReset!.toIso8601String(),
       'employmentType': employmentType,
       'annualSalary': annualSalary,
       'asset': asset,
@@ -170,4 +177,24 @@ extension EmploymentStatusX on EmploymentStatus {
     EmploymentStatus.onLeave => Colors.orange,
     EmploymentStatus.inactive => Colors.red,
   };
+}
+
+extension EmploymentStatusUI on EmploymentStatus {
+  (Color bg, Color fg, String label) resolve(ColorScheme cs) => switch (this) {
+        EmploymentStatus.active => (
+            Colors.green.withAlpha(30),
+            Colors.green,
+            'Active',
+          ),
+        EmploymentStatus.onLeave => (
+            cs.tertiaryContainer,
+            cs.onTertiaryContainer,
+            'On Leave',
+          ),
+        EmploymentStatus.inactive => (
+            Colors.red.withAlpha(30),
+            Colors.red,
+            'Inactive',
+          ),
+      };
 }

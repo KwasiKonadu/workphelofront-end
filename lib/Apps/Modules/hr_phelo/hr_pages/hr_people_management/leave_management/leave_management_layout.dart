@@ -1,24 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hr_phelo/Components/App_Theme/colors.dart';
 import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/leave_management/leave_management_widgets/employee_leave_list.dart';
 import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/leave_management/leave_management_widgets/leave_form.dart';
+import 'package:hr_phelo/Functions/Users/app_user_model.dart';
 import 'package:hr_phelo/components/app_widgets/lists/app_lists.dart';
 import 'package:unicons/unicons.dart';
 
+import '../../../../../../Functions/company_functions/leave_function/leave_state.dart';
+import '../../../../../../Functions/company_functions/onboarding_function/user_state.dart';
 import '../../../../../../components/form_components/my_buttons.dart';
 import '../../../../../../components/form_components/my_side_panel.dart';
 
-class LeaveManagementLayout extends StatefulWidget {
-  const LeaveManagementLayout({super.key});
+class LeaveManagementLayout extends ConsumerStatefulWidget {
+  final AppUser currentUser;
+  const LeaveManagementLayout({super.key, required this.currentUser});
 
   @override
-  State<LeaveManagementLayout> createState() => _LeaveManagementLayoutState();
+  ConsumerState<LeaveManagementLayout> createState() =>
+      _LeaveManagementLayoutState();
 }
 
-class _LeaveManagementLayoutState extends State<LeaveManagementLayout> {
+class _LeaveManagementLayoutState extends ConsumerState<LeaveManagementLayout> {
   final _panel = SidePanelController();
+  final _leaveFormKey = GlobalKey<LeaveFormState>();
   @override
   Widget build(BuildContext context) {
+    final leaveRequests = ref.watch(leaveProvider).requests;
+
+    final users = ref.watch(
+      usersByTenantProvider(widget.currentUser.tenantSlug),
+    );
+
+    // filter by tenant
+    final tenantRequests = leaveRequests
+        .where((r) => r.tenantSlug == widget.currentUser.tenantSlug)
+        .toList();
+
     return AppTableWidget(
       headerTitle: 'Employees',
       details: 'Manage your workforce',
@@ -30,13 +48,17 @@ class _LeaveManagementLayoutState extends State<LeaveManagementLayout> {
         onPressed: () => _panel.show(
           context: context,
           formTitle: 'Leave Form',
-          secOnPressed: () {},
-          onPressed: () {},
-          child: const LeaveForm(),
+          secOnPressed:
+              () => // ← reset
+                  _leaveFormKey.currentState?.reset(),
+          onPressed: () {
+            _leaveFormKey.currentState?.submit();
+            _panel.close();
+          },
+          child: LeaveForm(currentUser: widget.currentUser),
         ),
       ),
 
-      // search: buildSearchAndActionsBar(context),
       columns: const [
         TableColumn(header: 'Employee', width: FlexColumnWidth(4)),
         TableColumn(header: 'Type', width: FlexColumnWidth(1)),
@@ -46,8 +68,23 @@ class _LeaveManagementLayoutState extends State<LeaveManagementLayout> {
         TableColumn(header: 'Status', width: FlexColumnWidth(1)),
         TableColumn(header: '', width: FixedColumnWidth(48)),
       ],
-      itemCount: 10,
-      rowBuilder: buildEmployeeLeaveRowCells,
+
+      itemCount: tenantRequests.length,
+
+      rowBuilder: (context, index) {
+        final request = tenantRequests[index];
+        final user = users
+            .where((u) => u.email == request.employeeEmail)
+            .firstOrNull;
+        if (user == null) return [const SizedBox()];
+        return buildEmployeeLeaveRowCells(
+          context,
+          request,
+          user,
+          ref,
+          widget.currentUser,
+        );
+      },
     );
   }
 }

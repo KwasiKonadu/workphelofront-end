@@ -55,6 +55,15 @@ class _CompanyDashboardState extends ConsumerState<CompanyDashboard> {
         tenantSlug: '',
         companyStatus: '',
       );
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            '/login',
+            (route) => false,
+          );
+        }
+      });
     }
   }
 

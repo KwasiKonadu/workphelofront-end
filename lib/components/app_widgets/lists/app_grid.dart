@@ -123,7 +123,7 @@ class _EmployeeCardGridState extends State<EmployeeCardGrid> {
                         crossAxisCount: crossCount,
                         crossAxisSpacing: 16,
                         mainAxisSpacing: 16,
-                        mainAxisExtent: 335,
+                        mainAxisExtent: 350,
                       ),
                       itemCount: widget.users.length,
                       itemBuilder: (context, index) => EmployeeCard(

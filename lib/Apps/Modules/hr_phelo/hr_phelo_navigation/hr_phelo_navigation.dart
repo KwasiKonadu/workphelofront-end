@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/appraisal/appraisal_layout.dart';
 import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/employees/employee_layout.dart';
 import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/leave_management/leave_management_layout.dart';
+import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/my_data_page/my_data_page_layout.dart';
 import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/offboarding/offboarding_layout.dart';
-import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/hr_people_management/onboarding/onboarding_layout.dart';
 import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/work_force_management/my_schedules/schedules_layout.dart';
 import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/work_force_management/my_time/my_time.dart';
 import 'package:hr_phelo/Apps/Modules/hr_phelo/hr_pages/work_force_management/projects_tasks/projects_tasks_layout.dart';
@@ -29,24 +29,24 @@ List<NavItem> hrNavigationItems(
     // no requiredModule — always visible
   ),
 
-  NavSection('Employee Management'),
-
   NavDestination(
-    icon: UniconsLine.users_alt,
-    title: 'Employees',
+    icon: UniconsLine.user_circle,
+    title: 'My Data',
     pageIndex: 1,
-    page: EmployeeLayout(currentUser: currentUser),
-    requiredModule: AppModule.onboarding
+    page: MyDataPageLayout(),
     // no requiredModule — always visible
   ),
 
+  NavSection('Employee Management'),
+
   if (accessibleModules.contains(AppModule.onboarding))
     NavDestination(
-      icon: UniconsLine.user_plus,
-      title: 'Onboarding',
+      icon: UniconsLine.users_alt,
+      title: 'Employees',
       pageIndex: 2,
-      page: OnboardingLayout(currentUser: currentUser),
+      page: EmployeeLayout(currentUser: currentUser),
       requiredModule: AppModule.onboarding,
+      // no requiredModule — always visible
     ),
 
   if (accessibleModules.contains(AppModule.offboarding))
@@ -63,7 +63,7 @@ List<NavItem> hrNavigationItems(
       icon: UniconsLine.calender,
       title: 'Leave Management',
       pageIndex: 4,
-      page: const LeaveManagementLayout(),
+      page: LeaveManagementLayout(currentUser: currentUser),
       requiredModule: AppModule.leaveManagement,
     ),
 

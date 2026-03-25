@@ -23,8 +23,7 @@ class _SuperAdminLayoutState extends ConsumerState<SuperAdminLayout> {
   late AppUser user;
   int _currentIndex = 0;
   CompanyModel? _selectedCompany;
-  
-//TODO: work on this later
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -32,8 +31,24 @@ class _SuperAdminLayoutState extends ConsumerState<SuperAdminLayout> {
     if (args is AppUser) {
       user = args;
     } else {
+      user = AppUser(
+        uid: '',
+        email: '',
+        fullName: '',
+        role: 'guest',
+        companyName: '',
+        tenantSlug: '',
+        companyStatus: '',
+        lastLogin: DateTime.now(),
+      );
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+        if (mounted) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            '/login',
+            (route) => false,
+          );
+        }
       });
     }
   }

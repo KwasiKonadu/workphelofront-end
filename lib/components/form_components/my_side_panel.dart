@@ -153,13 +153,6 @@ class _AppSidePanelState extends State<AppSidePanel>
                                     isHovered: false,
                                   ),
                                 ),
-
-                                // Flexible(
-                                //   child: MyButton(
-                                //     btnText: 'Submit',
-                                //     btnOnPressed: widget.btnOnPressed,
-                                //   ),
-                                // ),
                               ],
                             ),
                           ),
@@ -176,6 +169,7 @@ class _AppSidePanelState extends State<AppSidePanel>
     );
   }
 }
+
 
 class SidePanelController {
   OverlayEntry? _entry;

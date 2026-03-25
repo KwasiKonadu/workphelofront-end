@@ -29,8 +29,12 @@ class AssignRolesTabState extends ConsumerState<AssignRolesTab> {
     final cs = Theme.of(context).colorScheme;
 
     // ← both scoped to this company
-    final users = ref.watch(usersByTenantProvider(widget.currentUser.tenantSlug));
-    final roles = ref.watch(rolesByTenantProvider(widget.currentUser.tenantSlug));
+    final users = ref.watch(
+      usersByTenantProvider(widget.currentUser.tenantSlug),
+    );
+    final roles = ref.watch(
+      rolesByTenantProvider(widget.currentUser.tenantSlug),
+    );
 
     final filtered = users
         .where(
@@ -57,8 +61,7 @@ class AssignRolesTabState extends ConsumerState<AssignRolesTab> {
                 child: DisplayCard(
                   child: ListView.separated(
                     itemCount: filtered.length,
-                    separatorBuilder: (_, _) =>
-                        Divider(height: 1, color: cs.outlineVariant),
+                    separatorBuilder: (_, _) => myDivider(context),
                     itemBuilder: (context, index) {
                       final user = filtered[index];
                       return InkWell(
@@ -100,17 +103,17 @@ class AssignRolesTabState extends ConsumerState<AssignRolesTab> {
                                     children: [
                                       Text(
                                         user.fullName,
-                                        style: myMainTextStyle(context)
-                                            .copyWith(
-                                                fontWeight: FontWeight.w500),
+                                        style: myMainTextStyle(
+                                          context,
+                                        ).copyWith(fontWeight: FontWeight.w500),
                                       ),
                                       Text(
                                         user.email,
                                         style: myMainTextStyle(context)
                                             .copyWith(
-                                          fontSize: 11,
-                                          color: cs.onSurfaceVariant,
-                                        ),
+                                              fontSize: 11,
+                                              color: cs.onSurfaceVariant,
+                                            ),
                                       ),
                                     ],
                                   ),
@@ -125,19 +128,20 @@ class AssignRolesTabState extends ConsumerState<AssignRolesTab> {
                                     if (role == null) return const SizedBox();
                                     return Container(
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 8, vertical: 2),
+                                        horizontal: 8,
+                                        vertical: 2,
+                                      ),
                                       decoration: BoxDecoration(
                                         color: role.color.withAlpha(20),
-                                        borderRadius:
-                                            BorderRadius.circular(20),
+                                        borderRadius: BorderRadius.circular(20),
                                       ),
                                       child: Text(
                                         role.name,
                                         style: myMainTextStyle(context)
                                             .copyWith(
-                                          fontSize: 11,
-                                          color: role.color,
-                                        ),
+                                              fontSize: 11,
+                                              color: role.color,
+                                            ),
                                       ),
                                     );
                                   }).toList(),
@@ -155,17 +159,16 @@ class AssignRolesTabState extends ConsumerState<AssignRolesTab> {
           ),
         ),
 
-        const SizedBox(width: 16),
-
         SizedBox(
-          width: 300,
+          width: 400,
           child: DisplayCard(
             child: _selectedEmployee == null
                 ? Center(
                     child: Text(
                       'Select an employee to assign roles',
-                      style: myMainTextStyle(context)
-                          .copyWith(color: cs.onSurfaceVariant),
+                      style: myMainTextStyle(
+                        context,
+                      ).copyWith(color: cs.onSurfaceVariant),
                       textAlign: TextAlign.center,
                     ),
                   )
@@ -182,4 +185,3 @@ class AssignRolesTabState extends ConsumerState<AssignRolesTab> {
     );
   }
 }
-

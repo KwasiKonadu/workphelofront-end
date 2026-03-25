@@ -65,11 +65,9 @@ class _EmployeeLayoutState extends ConsumerState<EmployeeLayout> {
           _panel.close();
         },
         secOnPressed: () => _formKey.currentState?.reset(),
-        // secOnPressed: () => _formKey.currentState?._reset(),
         child: OnboardingForm(key: _formKey, currentUser: widget.currentUser),
       ),
       onCardTap: (user) {
-        // open employee detail panel
       },
     );
   }
