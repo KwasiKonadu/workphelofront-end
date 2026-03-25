@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/Functions/Users/app_user_model.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 
 import '../../../../../../Components/App_Theme/text_styles.dart';
 import '../../../../../../Functions/company_functions/departments/department_model.dart';

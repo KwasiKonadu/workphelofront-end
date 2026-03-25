@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/Apps/Super_Admin/Pages/super_admin_portal.dart';
-import 'package:hr_phelo/components/app_widgets/user_avators.dart';
-import 'package:hr_phelo/pages/log_out/user_details_popup.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
+import 'package:hr_phelo/Functions/super_admin_functions/company_model.dart';
+import 'package:hr_phelo/apps/super_admin/super_admin_pages/super_admin_portal.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../Functions/Super_Admin_Functions/onboard_company_model.dart';
-import '../../Functions/Users/app_user_model.dart';
+
 import '../../components/app_theme/app_images.dart';
 import '../../components/app_theme/colors.dart';
 import '../../components/app_widgets/lists/horizontal_navigation_tabs.dart';
-import 'Pages/company_details_page.dart';
+import '../../components/app_widgets/user_avators.dart';
+import '../../pages/log_out/user_details_popup.dart';
+import 'super_admin_pages/company_details_page.dart';
 
 class SuperAdminLayout extends ConsumerStatefulWidget {
   const SuperAdminLayout({super.key});

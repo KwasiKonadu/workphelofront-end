@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/Apps/Company/dashboard/company_dashboard.dart';
-import 'package:hr_phelo/Components/app_theme/colors.dart';
-import 'package:hr_phelo/Apps/Modules/dashboard.dart';
-import 'package:hr_phelo/pages/get_started.dart';
-import 'package:hr_phelo/pages/login_page/login_form_types.dart/login_page.dart';
-
-import 'Apps/Super_Admin/super_admin_layout.dart';
-import 'Functions/Users/app_user_model.dart';
+import 'Functions/app_users/app_user_model.dart';
+import 'apps/company/dashboard/company_dashboard.dart';
+import 'apps/super_admin/super_admin_layout.dart';
+import 'components/app_theme/colors.dart';
+import 'modules/dashboard.dart';
+import 'pages/get_started.dart';
+import 'pages/login_page/login_form_types.dart/login_page.dart';
 
 void main() {
   runApp(ProviderScope(child: const MyApp()));

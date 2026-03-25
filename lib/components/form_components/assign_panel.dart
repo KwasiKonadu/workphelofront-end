@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/components/app_widgets/lists/chip_card.dart';
-import 'package:hr_phelo/components/form_components/my_buttons.dart';
 import 'package:unicons/unicons.dart';
 
 import '../../Components/App_Theme/text_styles.dart';
@@ -11,6 +9,8 @@ import '../../Functions/company_functions/onboarding_function/onboarding_model.d
 import '../../Functions/company_functions/onboarding_function/user_state.dart';
 import '../../Functions/company_functions/permissions/app_module.dart';
 import '../App_Theme/misc.dart';
+import '../app_widgets/lists/chip_card.dart';
+import 'my_buttons.dart';
 
 enum AssignPanelMode { roles, departments }
 

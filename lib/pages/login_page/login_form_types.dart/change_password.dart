@@ -5,7 +5,7 @@ import '../../../Components/app_theme/text_styles.dart';
 import '../../../components/app_theme/app_images.dart';
 import '../../../components/app_theme/padding.dart';
 import '../../../components/form_components/my_buttons.dart';
-import '../../../Apps/Modules/dashboard.dart';
+import '../../../Modules/dashboard.dart';
 import '../auth_layout.dart';
 import '../login_utils/password_requirements.dart';
 import '../login_utils/validators.dart';

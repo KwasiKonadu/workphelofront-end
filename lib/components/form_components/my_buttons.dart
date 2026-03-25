@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/Components/App_Theme/text_styles.dart';
 
 import '../app_theme/colors.dart';
 import '../app_theme/misc.dart';
 import '../app_theme/padding.dart';
+import '../app_theme/text_styles.dart';
 
 class MyButton extends StatelessWidget {
   final String btnText;

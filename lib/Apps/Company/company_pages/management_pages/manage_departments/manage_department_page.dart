@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/Functions/Users/app_user_model.dart';
-import 'package:hr_phelo/components/app_widgets/cards/display_card.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 import 'package:unicons/unicons.dart';
 
 import '../../../../../Components/App_Theme/text_styles.dart';
+import '../../../../../components/app_widgets/cards/display_card.dart';
 import 'departments_list.dart';
 
 class ManageDepartmentPage extends ConsumerStatefulWidget {

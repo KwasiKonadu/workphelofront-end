@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../../../../Functions/Users/app_user_model.dart';
 import '../../../../../components/app_theme/text_styles.dart';
 import '../../management_widgets/mgt_tab.dart';
 import 'pr_subpages/assign_roles_tab.dart';

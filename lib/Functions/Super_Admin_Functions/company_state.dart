@@ -3,7 +3,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 
-import 'onboard_company_model.dart';
+import 'company_model.dart';
 
 class CompanyState {
   final List<CompanyModel> companies;

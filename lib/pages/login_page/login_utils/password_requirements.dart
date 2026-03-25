@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/components/app_theme/text_styles.dart';
+
+import '../../../components/app_theme/text_styles.dart';
 
 class PasswordRequirement extends StatelessWidget {
   final String text;

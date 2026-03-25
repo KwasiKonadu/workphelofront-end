@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/Components/app_theme/text_styles.dart';
-import 'package:hr_phelo/components/app_theme/padding.dart';
-
 import '../../app_theme/misc.dart';
+import '../../app_theme/padding.dart';
+import '../../app_theme/text_styles.dart';
 
 class StatCard extends StatelessWidget {
   final String title;

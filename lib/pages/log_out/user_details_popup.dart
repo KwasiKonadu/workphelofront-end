@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/Functions/Users/app_user_model.dart';
-import 'package:hr_phelo/pages/log_out/logout_confirmation_popup.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 import 'package:unicons/unicons.dart';
+
+import 'logout_confirmation_popup.dart';
 
 class UserDetailsPopup {
   static OverlayEntry? _entry;

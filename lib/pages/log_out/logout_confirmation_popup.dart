@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/components/App_Theme/misc.dart';
-import 'package:hr_phelo/components/app_theme/text_styles.dart';
+import 'package:hr_phelo/Functions/app_users/login_functions/auth_state.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../Functions/Users/login_functions/auth_state.dart';
+import '../../components/app_theme/misc.dart';
+import '../../components/app_theme/text_styles.dart';
 
 void logoutConfirmationPopup(BuildContext context, WidgetRef ref) {
   final authNotifier = ref.read(authNotifierProvider.notifier);
@@ -31,7 +31,7 @@ void logoutConfirmationPopup(BuildContext context, WidgetRef ref) {
                       child: Icon(
                         UniconsLine.sign_out_alt,
                         size: 16,
-                        color: cs.error,
+                        color: cs.primary,
                       ),
                     ),
                     const SizedBox(width: 14),
@@ -43,7 +43,7 @@ void logoutConfirmationPopup(BuildContext context, WidgetRef ref) {
                             'Sign out',
                             style: myNoInfoStyle(
                               context,
-                            ).copyWith(color: cs.error),
+                            ).copyWith(color: cs.onSurface),
                           ),
                           const SizedBox(height: 4),
                           Text(

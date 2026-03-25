@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/Components/app_theme/padding.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../../Apps/Modules/hr_phelo/hr_pages/hr_people_management/employees/employee_page_wigets.dart/onboarding_form.dart';
+import '../../../Modules/hr_phelo/hr_pages/employee_management/employees/employee_page_wigets.dart/onboarding_form.dart';
 import '../../../Components/App_Theme/text_styles.dart';
 import '../../../Components/app_theme/colors.dart';
-import '../../../Functions/Users/app_user_model.dart';
 import '../../../Functions/company_functions/departments/department_model.dart';
 import '../../../Functions/company_functions/onboarding_function/onboarding_model.dart';
+import '../../app_theme/padding.dart';
 import '../../form_components/my_buttons.dart';
 import '../../form_components/text_fields.dart';
 import '../cards/display_card.dart';

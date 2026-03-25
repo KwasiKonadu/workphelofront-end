@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/Components/App_Theme/colors.dart';
+
+import '../../components/app_theme/colors.dart';
 
 class AuthLayout extends StatelessWidget {
   final Widget child;

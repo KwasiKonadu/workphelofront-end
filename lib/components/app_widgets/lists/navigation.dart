@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 
-import '../../../Functions/Users/app_user_model.dart';
 import '../../../Functions/company_functions/onboarding_function/user_state.dart';
 import '../../../Functions/company_functions/permissions/app_module.dart';
 import '../../../Functions/company_functions/permissions/roles_state.dart';

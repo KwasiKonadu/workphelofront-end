@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/Components/app_theme/misc.dart';
-import 'package:hr_phelo/Components/app_theme/padding.dart';
-import 'package:hr_phelo/Components/app_theme/text_styles.dart';
-import 'package:hr_phelo/components/form_components/my_buttons.dart';
+
 import 'package:unicons/unicons.dart';
+
+import '../app_theme/misc.dart';
+import '../app_theme/padding.dart';
+import '../app_theme/text_styles.dart';
+import 'my_buttons.dart';
 
 class AppSidePanel extends StatefulWidget {
   final Widget child;

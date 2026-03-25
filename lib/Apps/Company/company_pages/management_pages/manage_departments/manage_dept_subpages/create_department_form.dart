@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/Components/Form_Components/text_fields.dart';
-import 'package:hr_phelo/Components/app_theme/padding.dart';
-import 'package:hr_phelo/Functions/Users/app_user_model.dart';
-import 'package:hr_phelo/components/form_components/my_buttons.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 
 import '../../../../../../Functions/company_functions/departments/department_model.dart';
 import '../../../../../../Functions/company_functions/departments/department_state.dart';
 import '../../../../../../Functions/company_functions/onboarding_function/user_state.dart';
 import '../../../../../../components/app_theme/misc.dart';
+import '../../../../../../components/app_theme/padding.dart';
 import '../../../../../../components/app_theme/text_styles.dart';
+import '../../../../../../components/form_components/my_buttons.dart';
+import '../../../../../../components/form_components/text_fields.dart';
 
 class CreateDepartmentForm extends ConsumerStatefulWidget {
   final VoidCallback onSaved;

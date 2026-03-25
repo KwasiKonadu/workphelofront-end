@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/components/app_theme/padding.dart';
-import 'package:hr_phelo/pages/login_page/auth_layout.dart';
-import 'package:hr_phelo/pages/login_page/login_form_types.dart/login_page.dart';
-import 'package:hr_phelo/pages/login_page/login_form_types.dart/reset_password.dart';
-
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 import '../../../Components/Form_Components/text_fields.dart';
 import '../../../Components/app_theme/text_styles.dart';
-import '../../../Functions/Users/app_user_model.dart';
 import '../../../components/app_theme/app_images.dart';
+import '../../../components/app_theme/padding.dart';
 import '../../../components/app_widgets/snack_bar.dart';
 import '../../../components/form_components/my_buttons.dart';
+import '../auth_layout.dart';
+import 'login_page.dart';
+import 'reset_password.dart';
 
 class OTPPage extends StatefulWidget {
   final String email;

@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/Apps/Company/company_pages/management_pages/management_page_layout.dart';
-import 'package:hr_phelo/Apps/Company/company_pages/management_pages/tmp_pages.dart';
-import 'package:hr_phelo/Apps/Modules/module_options.dart';
-import 'package:hr_phelo/components/app_theme/app_images.dart';
-import 'package:hr_phelo/components/app_widgets/user_avators.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
+import 'package:hr_phelo/Functions/app_users/login_functions/auth_state.dart';
 import 'package:unicons/unicons.dart';
 
 import '../../../Components/app_theme/colors.dart';
-import '../../../Functions/Users/app_user_model.dart';
-import '../../../Functions/Users/login_functions/auth_state.dart';
 import '../../../Functions/company_functions/onboarding_function/onboarding_model.dart';
 import '../../../Functions/company_functions/onboarding_function/user_state.dart';
+import '../../../components/app_theme/app_images.dart';
 import '../../../components/app_theme/misc.dart';
 import '../../../components/app_widgets/cards/title_card.dart';
 import '../../../components/app_widgets/lists/horizontal_navigation_tabs.dart';
+import '../../../components/app_widgets/user_avators.dart';
+import '../../../modules/module_options.dart';
 import '../../../pages/log_out/user_details_popup.dart';
 import '../company_pages/management_pages/manage_departments/manage_department_page.dart';
+import '../company_pages/management_pages/management_page_layout.dart';
 import '../company_pages/management_pages/permissions_roles_pages/roles_permissions_page.dart';
+import '../company_pages/management_pages/tmp_pages.dart';
 
 class CompanyDashboard extends ConsumerStatefulWidget {
   const CompanyDashboard({super.key});

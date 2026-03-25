@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/Components/app_theme/padding.dart';
-import 'package:hr_phelo/components/app_theme/misc.dart';
-import 'package:hr_phelo/components/form_components/my_buttons.dart';
-
+import '../../app_theme/misc.dart';
+import '../../app_theme/padding.dart';
 import '../../app_theme/text_styles.dart';
+import '../../form_components/my_buttons.dart';
 
 class MenuCard extends StatefulWidget {
   const MenuCard({

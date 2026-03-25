@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/components/app_theme/padding.dart';
-import 'package:hr_phelo/components/form_components/text_fields.dart';
-import 'package:hr_phelo/pages/login_page/auth_layout.dart';
-import 'package:hr_phelo/pages/login_page/login_form_types.dart/login_page.dart';
-import 'package:hr_phelo/pages/login_page/login_form_types.dart/otp_page.dart';
-
 import '../../../Components/app_theme/text_styles.dart';
 import '../../../components/app_theme/app_images.dart';
+import '../../../components/app_theme/padding.dart';
 import '../../../components/form_components/my_buttons.dart';
+import '../../../components/form_components/text_fields.dart';
+import '../auth_layout.dart';
 import '../login_utils/validators.dart';
+import 'login_page.dart';
+import 'otp_page.dart';
 
 class EmailConfirmation extends StatefulWidget {
   const EmailConfirmation({super.key});

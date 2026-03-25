@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/Components/app_theme/colors.dart';
-import 'package:hr_phelo/components/App_Theme/misc.dart';
-import 'package:hr_phelo/components/app_theme/app_images.dart';
-import 'package:hr_phelo/components/app_theme/padding.dart';
-import 'package:hr_phelo/components/app_widgets/snack_bar.dart';
-import 'package:hr_phelo/pages/login_page/auth_layout.dart';
-import 'package:hr_phelo/pages/login_page/login_form_types.dart/forgot_password.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
+import 'package:hr_phelo/Functions/app_users/login_functions/auth_state.dart';
+import 'package:hr_phelo/Functions/super_admin_functions/company_model.dart';
 import 'package:unicons/unicons.dart';
 
 import '../../../Components/Form_Components/text_fields.dart';
 import '../../../Components/app_theme/text_styles.dart';
 import '../../../Functions/Super_Admin_Functions/company_state.dart';
-import '../../../Functions/Super_Admin_Functions/onboard_company_model.dart';
-import '../../../Functions/Users/app_user_model.dart';
-import '../../../Functions/Users/login_functions/auth_state.dart';
+import '../../../components/app_theme/app_images.dart';
+import '../../../components/app_theme/colors.dart';
+import '../../../components/app_theme/misc.dart';
+import '../../../components/app_theme/padding.dart';
+import '../../../components/app_widgets/snack_bar.dart';
 import '../../../components/form_components/my_buttons.dart';
+import '../auth_layout.dart';
 import '../login_utils/validators.dart';
+import 'forgot_password.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
   const LoginPage({super.key});

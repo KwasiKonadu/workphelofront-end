@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/Apps/Company/company_pages/management_pages/manage_departments/manage_dept_subpages/create_department_form.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 
 import '../../../../../Components/App_Theme/text_styles.dart';
 import '../../../../../Components/app_theme/padding.dart';
-import '../../../../../Functions/Users/app_user_model.dart';
 import '../../../../../Functions/company_functions/departments/department_model.dart';
 import '../../../../../Functions/company_functions/departments/department_state.dart';
 import '../../../../../components/app_theme/misc.dart';
 import '../../../../../components/app_widgets/lists/chip_card.dart';
+import 'manage_dept_subpages/create_department_form.dart';
 import 'manage_dept_subpages/dept_helpers.dart';
 import 'manage_dept_subpages/dept_list_details.dart';
 

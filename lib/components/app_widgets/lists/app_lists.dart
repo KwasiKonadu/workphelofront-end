@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/components/app_theme/padding.dart';
-import 'package:hr_phelo/components/app_widgets/cards/display_card.dart';
 import 'package:unicons/unicons.dart';
 
 import '../../app_theme/misc.dart';
+import '../../app_theme/padding.dart';
 import '../../app_theme/text_styles.dart';
+import '../cards/display_card.dart';
 
 class AppListWidget extends StatefulWidget {
   final String headerTitle;

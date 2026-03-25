@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/components/app_theme/padding.dart';
-import 'package:hr_phelo/components/app_widgets/cards/display_card.dart';
-import 'package:hr_phelo/components/app_widgets/lists/chip_card.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 
-import '../../../../../../Functions/Users/app_user_model.dart';
 import '../../../../../../Functions/company_functions/permissions/app_module.dart';
 import '../../../../../../Functions/company_functions/permissions/roles_state.dart';
 import '../../../../../../components/App_Theme/misc.dart';
+import '../../../../../../components/app_theme/padding.dart';
 import '../../../../../../components/app_theme/text_styles.dart';
+import '../../../../../../components/app_widgets/cards/display_card.dart';
+import '../../../../../../components/app_widgets/lists/chip_card.dart';
 import 'custom_role_form.dart';
 
 class RoleTemplatesTab extends ConsumerStatefulWidget {
@@ -80,7 +80,7 @@ class RoleTemplatesTabState extends ConsumerState<RoleTemplatesTab> {
         Expanded(
           child: _showCustomForm
               ? CustomRoleForm(
-                  currentUser: widget.currentUser, // ← pass so it can set tenantSlug
+                  currentUser: widget.currentUser,
                   onSaved: () => setState(() => _showCustomForm = false),
                 )
               : _selectedRole != null

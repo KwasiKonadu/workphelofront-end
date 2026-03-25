@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'dart:math' show Random;
 
-import 'package:hr_phelo/Components/App_Theme/text_styles.dart';
+import '../app_theme/text_styles.dart';
+
 
 class UserAvatar extends StatelessWidget {
   final String initials;

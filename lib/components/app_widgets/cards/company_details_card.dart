@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/components/app_theme/padding.dart';
-import 'package:hr_phelo/components/app_widgets/cards/display_card.dart';
-
+import 'package:hr_phelo/Functions/super_admin_functions/company_model.dart';
 import '../../../Components/App_Theme/text_styles.dart';
-import '../../../Functions/Super_Admin_Functions/onboard_company_model.dart';
 import '../../app_theme/misc.dart';
+import '../../app_theme/padding.dart';
+import 'display_card.dart';
 
 class CompanyDetailCard extends StatefulWidget {
   final CompanyModel company;

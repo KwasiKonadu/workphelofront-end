@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hr_phelo/Functions/app_users/app_user_model.dart';
 
 import '../Components/app_theme/text_styles.dart';
 import '../Functions/Super_Admin_Functions/company_state.dart';
-import '../Functions/Users/app_user_model.dart';
 import '../Functions/company_functions/permissions/company_roles.dart';
 import '../components/app_theme/app_images.dart';
 import '../components/form_components/my_buttons.dart';

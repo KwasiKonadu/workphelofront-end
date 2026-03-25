@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hr_phelo/Components/App_Theme/colors.dart';
-import 'package:hr_phelo/components/app_theme/padding.dart';
-import 'package:hr_phelo/components/app_theme/text_styles.dart';
-import 'package:hr_phelo/components/form_components/my_buttons.dart';
+import 'package:hr_phelo/Functions/super_admin_functions/company_model.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../../Apps/Super_Admin/sa_widgets/company_onboarded_list.dart';
-import '../../../Functions/Super_Admin_Functions/onboard_company_model.dart';
+import '../../../apps/super_admin/super_admin_widgets/company_onboarded_list.dart';
+import '../../app_theme/colors.dart';
 import '../../app_theme/misc.dart';
+import '../../app_theme/padding.dart';
+import '../../app_theme/text_styles.dart';
+import '../../form_components/my_buttons.dart';
 
 class TitleCardStat {
   final String title;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hr_phelo/components/App_Theme/misc.dart';
-import 'package:hr_phelo/pages/log_out/logout_confirmation_popup.dart';
+import 'package:hr_phelo/Functions/app_users/login_functions/auth_state.dart';
 import 'package:unicons/unicons.dart';
 
-import '../../Functions/Users/login_functions/auth_state.dart';
+import '../../pages/log_out/logout_confirmation_popup.dart';
+import '../app_theme/misc.dart';
 import 'lists/navigation.dart';
 import 'lists/navigation_tile.dart';
 
